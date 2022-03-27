@@ -1,0 +1,33 @@
+CXX      := -g++
+# CXXFLAGS := -pedantic-errors -Wall -Wextra -Werror -O3 -std=c++17 -ffast-math
+CXXFLAGS := -O3 -std=c++17 -ffast-math
+LDFLAGS  := -L/usr/lib -lstdc++ -lm
+BUILD    := build
+OBJ_DIR  := $(BUILD)
+TARGET   := lbm
+INCLUDE  := -Iinclude/ -I/usr/include/eigen3/
+SRC_TRAJ  :=  $(filter-out src/trace.cpp, $(wildcard src/*.cpp))
+#SRC_TRACE :=  $(filter-out src/main.cpp, $(wildcard src/*.cpp))
+
+OBJECTS_TRAJ := $(SRC_TRAJ:%.cpp=$(OBJ_DIR)/%.o)
+
+all: build traj
+
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) -o $@ -c $<
+
+traj: 	$(OBJECTS_TRAJ)
+	@mkdir -p $(@D)
+	$(CXX) $(CXXFLAGS) $(INCLUDE) $(LDFLAGS) -o lbm $(OBJECTS_TRAJ)
+
+.PHONY: all build clean allclean
+
+build:
+	@mkdir -p $(OBJ_DIR)
+
+clean:
+	rm -rf build/*
+
+allclean: clean
+	rm traj

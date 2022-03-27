@@ -1,0 +1,5 @@
+# A continuous P2 vector element
+#
+# Compile this form with FFC: ffc -l dolfin Velocity.form
+
+element = VectorElement("Lagrange", triangle, 3)

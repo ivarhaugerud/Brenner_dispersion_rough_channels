@@ -1,5 +1,7 @@
-# Requirements 
+# General 
 The code is divded into two main sections. In the main directory one solves the Navier--Stokes equations and Brenner equation to calculate the effective diffusion coefficient by running ```flow.py``` which uses the other files in the directory. To use Brenners theory without flow, the file ```pure_diff.py``` can be ran. In the sub-folder traj, one finds the C++ code to simulate advected (or not) random walkers. To find the neccesary flow field, one first needs to run ```flow.py```.
+
+# Requirements 
 
 To run the python 3 code, one needs the packages dolfin, h5py, meshpy, numpy and matplotlib.
 Dolfin/FEniCS is used to solve the equations using the finite element method. Its documentation can be found at [https://fenicsproject.org/olddocs/dolfin/latest/python/index.html]

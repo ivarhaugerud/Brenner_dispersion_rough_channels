@@ -1,4 +1,10 @@
-# rough-tracers
+# Requirements 
+The code is divded into two main sections. In the main directory one solves the Navier--Stokes equations and Brenner equation to calculate the effective diffusion coefficient by running ```flow.py``` which uses the other files in the directory. To use Brenners theory without flow, the file ```pure_diff.py``` can be ran. In the sub-folder traj, one finds the C++ code to simulate advected (or not) random walkers. To find the neccesary flow field, one first needs to run ```flow.py```.
+
+To run the python 3 code, one needs the packages dolfin, h5py, meshpy, numpy and matplotlib.
+Dolfin/FEniCS is used to solve the equations using the finite element method. Its documentation can be found at [https://fenicsproject.org/olddocs/dolfin/latest/python/index.html]
+
+# Rough-tracers
 
 Example use:
 
@@ -12,7 +18,7 @@ Pure diffusion with Brenners solution
 python3 pure_diff.py -res 100 -b_min 0.0 -b_max 1.9 -b_N 20
 ```
 
-# traj (particle tracking) is a C++ layer that uses the flow field produced in the preceding step
+# Traj (particle tracking) is a C++ layer that uses the flow field produced in the preceding step
 ```
 cd traj
 cmake .

@@ -21,10 +21,16 @@ python3 pure_diff.py -res 100 -b_min 0.0 -b_max 1.9 -b_N 20
 ```
 
 # Traj (particle tracking) is a C++ layer that uses the flow field produced in the preceding step
+
+To compile
 ```
 cd traj
 cmake .
 make
+```
+
+To run
+```
 ./traj ../data_square/flow_Re0.0_b0.2.h5 Dm=1.0 T=100.0 dt=0.001 Nrw=100 traj_intv=0.1 pos_intv=0.1 stat_intv=0.1 dump_traj=true verbose=true U=1.0
 ```
 to plot:
@@ -36,5 +42,3 @@ or for trajectories
 ```
 pl 'data_square/RandomWalkers/Re0.000000_b0.200000_Dm1.000000__dt0.001000_Nrw100/Trajectories/traj_0.traj' u 2:3 w l
 ```
-
-There is more to come.
